@@ -26,9 +26,9 @@ jobs:
             ./deploy.sh
 workflows:
   version: 2.1
-  front:
+  app-deploy:
     jobs:
-      - build
       - deploy:
-          - requires:
-              - build
+          requires:
+            - build
+      - build
