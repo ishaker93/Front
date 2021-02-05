@@ -14,8 +14,8 @@ jobs:
             aws configure set aws_access_key_id $accesskey
             aws configure set aws_secret_access_key $secretkey
             eval $(aws ecr get-login --no-include-email --region $region | sed 's;https://;;g')
-            docker build -t $IMAGE .
-            docker push $IMAGE 
+            sudo docker build -t $IMAGE .
+            sudo docker push $IMAGE 
   deploy:
     docker: 
       - image: 'ishaker/aws-ecscli'
