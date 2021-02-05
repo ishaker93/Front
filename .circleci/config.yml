@@ -5,7 +5,7 @@ jobs:
     docker: penta2/codecommit
     steps:
       - checkout
-      - setup_remote_docker:
+      - setup_remote_docker
       - run: |
           pip3 install awscli
           IMAGE=$aws_account_id/front
