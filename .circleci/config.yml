@@ -28,6 +28,7 @@ workflows:
   version: 2.1
   front:
     jobs:
-      - deploy
-          requires: build
       - build
+      - deploy:
+          - requires:
+              - build
