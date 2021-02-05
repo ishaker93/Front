@@ -9,5 +9,11 @@ jobs:
       - run:
           name: Deploy ecs
           command: |
-            ./deploy.sh 
+            ./deploy.sh
+workflows:
+  version: 2.1
+  front:
+    jobs:
+      - deploy
+ 
 
