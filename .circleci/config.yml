@@ -2,17 +2,16 @@
 version: 2.1
 jobs:
   build:
-    machine: true
+    docker: penta2/codecommit
     steps:
       - checkout
       - setup_remote_docker:
-          version: 19.03.13
       - run: |
           pip3 install awscli
           IMAGE=$aws_account_id/front
           aws configure set aws_access_key_id $accesskey
           aws configure set aws_secret_access_key $secretkey
-          #eval $(aws ecr get-login --no-include-email --region $region | sed 's;https://;;g')
+          eval $(aws ecr get-login --no-include-email --region $region | sed 's;https://;;g')
           docker build -t $IMAGE .
           docker push $IMAGE 
   deploy:
