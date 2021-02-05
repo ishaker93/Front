@@ -3,12 +3,13 @@ version: 2.1
 jobs:
   build:
     docker: 
-      - image: penta2/codecommit
+      - image: python:3.7.4-alpine3.10
     steps:
       - checkout
       - setup_remote_docker:
           version: 19.03.13
       - run: |
+          pip3 install awscli
           IMAGE=$aws_account_id/front
           aws configure set aws_access_key_id $accesskey
           aws configure set aws_secret_access_key $secretkey
