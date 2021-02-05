@@ -29,6 +29,5 @@ workflows:
   front:
     jobs:
       - deploy
-          requires:
-            - build
+          requires: build
       - build
