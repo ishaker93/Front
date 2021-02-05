@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   deploy:
     docker: 
-      - image: 'mikesir87/aws-cli'
+      - image: 'aws/amazon-ecs-cli'
     steps:
       - checkout
       - run:
