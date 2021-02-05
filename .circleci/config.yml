@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - ishaker/aws-cli
+      - image: ishaker/aws-cli
     steps:
       - checkout
       - run: 
