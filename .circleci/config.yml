@@ -2,8 +2,7 @@
 version: 2.1
 jobs:
   build:
-    machine: 
-      - true
+    machine: true
     steps:
       - checkout
       - run: 
