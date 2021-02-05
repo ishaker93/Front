@@ -2,7 +2,8 @@
 version: 2.1
 jobs:
   build:
-    docker: penta2/codecommit
+    docker: 
+      - penta2/codecommit
     steps:
       - checkout
       - setup_remote_docker
