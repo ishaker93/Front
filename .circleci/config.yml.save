@@ -1,0 +1,35 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+jobs:
+  build:
+    docker: 
+      - image: ubuntu 
+    steps:
+      - checkout
+      #- setup_remote_docker:
+         # version: 19.03.13
+      - run: |
+          pip3 install awscli
+          IMAGE=$aws_account_id/front
+          aws configure set aws_access_key_id $accesskey
+          aws configure set aws_secret_access_key $secretkey
+          eval $(aws ecr get-login --no-include-email --region $region | sed 's;https://;;g')
+          docker build -t $IMAGE .
+          docker push $IMAGE 
+  deploy:
+    docker: 
+      - image: 'ishaker/aws-ecscli'
+    steps:
+      - checkout
+      - run:
+          name: Deploy ecs
+          command: |
+            ./deploy.sh
+workflows:
+  version: 2.1
+  app-deploy:
+    jobs:
+      - deploy:
+          requires:
+            - build
+      - build
