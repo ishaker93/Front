@@ -1,7 +1,7 @@
 version: "3"
 services:
   front:
-    image: 737698732534.dkr.ecr.us-east-1.amazonaws.com/front
+    image: 737698732534.dkr.ecr.us-east-1.amazonaws.com/Front
     hostname: front
     ports:
       - 80:3000
