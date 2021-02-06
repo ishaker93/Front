@@ -11,7 +11,7 @@ jobs:
           name: deploy
           command: |
             #pip3 install awscli
-            IMAGE=$aws_account_id/front
+            IMAGE=$aws_account_id/$CIRCLE_PROJECT_REPONAME
             aws configure set aws_access_key_id $accesskey
             aws configure set aws_secret_access_key $secretkey
             aws configure set region $region
